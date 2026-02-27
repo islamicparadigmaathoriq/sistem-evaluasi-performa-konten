@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YTRank — Sistem Evaluasi Performa Konten YouTube</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div id="page-login" class="page active">
+    <div class="login-bg"></div>
+    <div class="login-grid"></div>
+    <div class="login-box">
+      <div class="login-left">
+        <div class="brand-mark">
+          <div class="brand-icon">▶</div>
+          <div class="brand-name">YT<span>Rank</span></div>
+        </div>
+        <h1 class="login-headline">Sistem Evaluasi<br>Performa Konten<br><em>YouTube</em></h1>
+        <p class="login-sub">
+          Sistem evaluasi untuk menilai performa video secara objektif, transparan, dan terukur.
+        </p>
+        <button id="btn-login" class="login-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Masuk dengan Google
+        </button>
+        <div id="login-error" class="login-error hidden"></div>
+      </div>
+      <div class="login-right">
+        <div class="pill-row">
+          <div class="pill"><span></span> Views &amp; Watch Time</div>
+          <div class="pill"><span></span> Likes &amp; Comments</div>
+        </div>
+        <div class="pill-row">
+          <div class="pill"><span></span> Subscribers Gained</div>
+          <div class="pill"><span></span> Engagement Rate</div>
+        </div>
+        <div class="pill pill-solo"><span></span> OAuth 2.0 Secure — Data aman</div>
+        <div class="pill pill-solo"><span></span> Metode SAW &amp; Pembobotan ROC</div>
+        <div class="pill pill-solo"><span></span> Ranking otomatis 50 video terbaru</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-layout" class="app-layout hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="sidebar-name">YT<span>Rank</span></div>
+      </div>
+
+      <div class="nav-label">Navigasi</div>
+
+      <a class="nav-item active" data-page="page-dashboard">
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+        </span>
+        <span class="nav-text">Dashboard</span>
+      </a>
+
+      <a class="nav-item" data-page="page-ranking">
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </span>
+        <span class="nav-text">Evaluasi &amp; Ranking</span>
+      </a>
+
+      <a class="nav-item" data-page="page-detail">
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </span>
+        <span class="nav-text">Detail Video</span>
+      </a>
+
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="avatar" id="sidebar-avatar">A</div>
+          <div class="user-info">
+            <div class="user-name" id="sidebar-username">—</div>
+            <div class="user-role" id="sidebar-videocnt">Memuat...</div>
+          </div>
+        </div>
+        <button id="btn-logout" class="logout-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          Keluar
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+
+      //--------------
+      //HALAMAN DASHBOARD
+      //--------------
+
+      <!-- PAGE: DASHBOARD -->
+      <section id="page-dashboard" class="inner-page active">
+        <div class="topbar">
+          <div>
+            <div class="page-title">Dashboard <span>Overview</span></div>
+            <div class="page-sub" id="dash-channel-sub">Memuat data saluran…</div>
+          </div>
+          <div class="topbar-right">
+            <div class="badge"><div class="dot"></div> Live Data</div>
+            <div class="badge" id="dash-video-badge">— video</div>
+          </div>
+        </div>
+
+        <div class="stat-grid" id="stat-grid">
+          <div class="stat-card" style="--cc:rgba(255,23,68,.12)">
+            <div class="stat-label">Total Views</div>
+            <div class="stat-value" id="stat-views">—</div>
+            <div class="stat-icon"></div>
+          </div>
+          <div class="stat-card" style="--cc:rgba(124,77,255,.1)">
+            <div class="stat-label">Total Watch Time</div>
+            <div class="stat-value" id="stat-watchtime">—</div>
+            <div class="stat-icon"></div>
+          </div>
+          <div class="stat-card" style="--cc:rgba(0,229,255,.08)">
+            <div class="stat-label">Total Subscribers</div>
+            <div class="stat-value" id="stat-subs">—</div>
+            <div class="stat-icon"></div>
+          </div>
+          <div class="stat-card" style="--cc:rgba(255,214,0,.08)">
+            <div class="stat-label">Avg. Engagement Rate</div>
+            <div class="stat-value" id="stat-er">—</div>
+            <div class="stat-icon"></div>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <div class="section-title">Semua Video</div>
+          <div class="section-actions">
+            <button class="export-btn csv" id="btn-export-csv">⬇ CSV</button>
+            <button class="export-btn xlsx" id="btn-export-xlsx">⬇ XLSX</button>
+            <a class="section-link" data-page="page-ranking">Lihat Ranking →</a>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-head tbl-main">
+            <div>#</div>
+            <div>Judul Video</div>
+            <div>Views</div>
+            <div>Likes</div>
+            <div>Comments</div>
+            <div>Watch Time</div>
+            <div>Subs ↑</div>
+            <div>Eng. Rate</div>
+          </div>
+          <div id="video-table-body">
+            <div class="loading-row">Memuat video…</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE: EVALUASI & RANKING -->
+      <section id="page-ranking" class="inner-page">
+        <div class="topbar">
+          <div>
+            <div class="page-title">Evaluasi &amp; <span>Ranking</span></div>
+            <div class="page-sub">Metode SAW + Pembobotan ROC</div>
+          </div>
+        </div>
+
+        <div class="weight-panel">
+          <div class="section-head">
+            <div class="section-title">Urutan Prioritas Kriteria</div>
+            <div class="tag yellow">Drag untuk Ubah Urutan</div>
+          </div>
+          <p class="weight-intro">
+            Urutkan kriteria dari yang paling penting (atas) ke yang kurang penting (bawah).
+            Bobot ROC dihitung otomatis berdasarkan urutan ini.
+          </p>
+          <div class="criteria-list" id="criteria-list"></div>
+          <div class="calc-row">
+            <button id="btn-calculate" class="calc-btn">Hitung SAW‑ROC</button>
+            <div class="total-weight">Total bobot: <strong id="total-weight-display">100%</strong></div>
+          </div>
+        </div>
+
+        <div id="ranking-results" class="hidden">
+          <div class="section-head">
+            <div class="section-title">Matriks Normalisasi SAW</div>
+            <div class="tag">rᵢⱼ = xᵢⱼ / max(xᵢⱼ)</div>
+          </div>
+          <div class="table-card" style="margin-bottom:20px;overflow-x:auto">
+            <table class="norm-table" id="norm-table"></table>
+          </div>
+
+          <div class="section-head">
+            <div class="section-title">Hasil Ranking Final</div>
+            <div class="section-actions">
+              <button class="export-btn csv" id="btn-export-ranking-csv">⬇ CSV</button>
+              <button class="export-btn xlsx" id="btn-export-ranking-xlsx">⬇ XLSX</button>
+              <div class="tag green">✓ Selesai Dihitung</div>
+            </div>
+          </div>
+          <div class="table-card">
+            <div class="table-head tbl-rank">
+              <div>Rank</div>
+              <div>Judul Video</div>
+              <div>Skor SAW (Vᵢ)</div>
+              <div>Performa</div>
+            </div>
+            <div id="ranking-table-body"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE: DETAIL VIDEO -->
+      <section id="page-detail" class="inner-page">
+        <div class="topbar">
+          <div>
+            <div class="page-title">Detail <span>Video</span></div>
+            <div class="page-sub">Klik baris video di Dashboard untuk melihat detail</div>
+          </div>
+        </div>
+        <div id="detail-content">
+          <div class="detail-empty">
+            <div style="font-size:48px;margin-bottom:16px">🎬</div>
+            <div>Belum ada video yang dipilih.</div>
+            <div style="margin-top:8px;font-size:12px;color:var(--muted)">
+              Klik baris video di halaman Dashboard untuk melihat detail.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loading-text">Memuat…</div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
