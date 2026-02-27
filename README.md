@@ -1,4 +1,4 @@
-# YTRank — SPK Evaluasi Konten YouTube
+# YTRank — Sistem Evaluasi Konten YouTube
 > Tugas Akhir · Universitas Siber Asia  
 > Metode: Simple Additive Weighting (SAW) + Rank Order Centroid (ROC)
 
